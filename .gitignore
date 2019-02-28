@@ -102,3 +102,18 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+#Data
+beers.csv
+breweries.csv
+
+#Scrapy spiders
+ba_scrape/*
+!ba_scrape/ba_scrape
+ba_scrape/ba_scrape/*
+!ba_scrape/ba_scrape/spiders
+ba_scrape/ba_scrape/spiders/*
+!ba_scrape/ba_scrape/spiders/beer_getter.py
+
+#VScode settings
+settings.json
