@@ -72,7 +72,10 @@ class BeerSpider(scrapy.Spider):
         beer_ratings = response.xpath("//tr/td[4]/b/text()").getall()
         beer_scores = response.xpath("//tr/td[5]/b/text()").getall()
 
-        # Convert "?" abvs to None, so SQL will read as Null
+        # Strip beer ratings of commas for SQLite
+        beer_ratings = [int(rating.replace(",", "")) for rating in beer_ratings]
+
+        # Convert "?" abvs to None, so SQLite will read as Null
         beer_abvs = [None if abv == "?" else abv for abv in beer_abvs]
 
         if len(beer_names) == 0:
